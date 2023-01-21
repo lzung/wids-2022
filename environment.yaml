@@ -1,0 +1,14 @@
+name: wids-2022
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib
+  - numpy
+  - pandas
+  - altair
+  - requests
+  - pip
+  - pip:
+      - altair-data-server
