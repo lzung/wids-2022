@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"data": {"url": "http://localhost:62439/3af8d92e632e0636c1736e6569dd97b2.json"}, "mark": "bar", "encoding": {"color": {"field": "What is your gender?", "scale": {"scheme": "accent"}, "title": "Gender", "type": "nominal"}, "row": {"field": "What is your gender?", "title": null, "type": "nominal"}, "tooltip": {"aggregate": "count", "type": "quantitative"}, "x": {"axis": {"labelAngle": -45}, "field": "What is your current yearly compensation (approximate $USD)?", "sort": ["0-999", "1,000-1,999", "2,000-2,999", "3,000-3,999", "4,000-4,999", "5,000-7,499", "7,500-9,999", "10,000-14,999", "15,000-19,999", "20,000-24,999", "25,000-29,999", "30,000-39,999", "40,000-49,999", "50,000-59,999", "60,000-69,999", "70,000-79,999", "80,000-89,999", "90,000-99,999", "100,000-124,999", "125,000-149,999", "150,000-199,999", "200,000-249,999", "250,000-299,999", "300,000-499,999", "500,000-999,999", ">1,000,000"], "title": "Annual Salary (USD)", "type": "nominal"}, "y": {"aggregate": "count", "title": "Number of Respondents", "type": "quantitative"}}, "height": 150, "resolve": {"scale": {"y": "independent"}}, "selection": {"selector503": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "Current Yearly Compensation", "width": 700}, {"hconcat": [{"data": {"url": "http://localhost:62439/f3ca8fe964742aa9f251fd0cffbb56b1.json"}, "mark": "bar", "encoding": {"color": {"field": "What is your gender?", "scale": {"scheme": "accent"}, "title": "Gender", "type": "nominal"}, "order": {"field": "What is your gender?", "sort": "descending", "type": "nominal"}, "tooltip": {"aggregate": "count", "type": "quantitative"}, "x": {"aggregate": "count", "stack": "normalize", "title": "Proportion of Respondents", "type": "quantitative"}, "y": {"field": "Select the title most similar to your current role (or most recent title if retired): - Selected Choice", "sort": ["Currently not employed", "Data Administrator", "Data Analyst", "Data Architect", "Data Engineer", "Data Scientist", "Developer Advocate", "Engineer (non-software)", "Manager", "ML/MLops Engineer", "Research Scientist", "Software Engineer", "Statistician", "Teacher / professor", "Other"], "title": "Role", "type": "nominal"}}, "selection": {"selector464": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "Current Role/Most Recent Title", "width": 250}, {"data": {"url": "http://localhost:62439/959d13c85b3dd738618963a96f0e4d27.json"}, "mark": "bar", "encoding": {"color": {"field": "What is your gender?", "scale": {"scheme": "accent"}, "title": "Gender", "type": "nominal"}, "order": {"field": "What is your gender?", "sort": "descending", "type": "nominal"}, "tooltip": {"aggregate": "count", "type": "quantitative"}, "x": {"aggregate": "count", "stack": "normalize", "title": "Proportion of Respondents", "type": "quantitative"}, "y": {"field": "In what industry is your current employer/contract (or your most recent employer if retired)? - Selected Choice", "sort": ["Academics/Education", "Accounting/Finance", "Broadcasting/Communications", "Computers/Technology", "Energy/Mining", "Government/Public Service", "Insurance/Risk Assessment", "Manufacturing/Fabrication", "Marketing/CRM", "Medical/Pharmaceutical", "Non-profit/Service", "Online/Internet-based Services", "Retail/Sales", "Shipping/Transportation", "Other"], "title": "Industry", "type": "nominal"}}, "title": ["Industry of Current or", "Most Recent Employer/Contract"], "width": 250}]}], "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json"};
+      var embedOpt = {"renderer": "png", "mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

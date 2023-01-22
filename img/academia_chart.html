@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "hconcat": [{"data": {"url": "http://localhost:62439/5831e8434c6a373c48b2ddac1eecdc86.json"}, "mark": "bar", "encoding": {"color": {"field": "What is your gender?", "scale": {"scheme": "accent"}, "title": "Gender", "type": "nominal"}, "row": {"field": "What is your gender?", "header": {"labels": false, "title": null}, "sort": ["Man", "Woman"], "type": "nominal"}, "tooltip": {"aggregate": "sum", "field": "percent", "type": "quantitative"}, "x": {"axis": {"labelAngle": -25}, "field": "What is the highest level of formal education that you have attained or plan to attain within the next 2 years?", "sort": ["I prefer not to answer", "High school", "Some college/university", "Bachelor\u2019s degree", "Master\u2019s degree", "Professional doctorate", "Doctoral degree"], "title": null, "type": "nominal"}, "y": {"aggregate": "sum", "axis": {"format": "%"}, "field": "percent", "title": "Percentage of Respondents", "type": "quantitative"}}, "height": 220, "resolve": {"scale": {"y": "shared"}}, "selection": {"selector441": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": ["What is the highest level of formal education that", "you have attained or plan to attain within the next 2 years?"], "transform": [{"joinaggregate": [{"op": "count", "field": "*", "as": "total"}]}, {"calculate": "1 / datum.total", "as": "percent"}], "width": 350}, {"vconcat": [{"data": {"url": "http://localhost:62439/aef7ac43cb372d1d6dfe51d4e8146cfe.json"}, "mark": "bar", "encoding": {"color": {"field": "What is your gender?", "scale": {"scheme": "accent"}, "title": "Gender", "type": "nominal"}, "column": {"field": "What is your gender?", "header": {"labels": false, "title": ["Are you currently a student?", "(high school, university, or graduate)"]}, "sort": ["Man", "Woman"], "type": "nominal"}, "tooltip": {"aggregate": "sum", "field": "percent", "type": "quantitative"}, "x": {"axis": {"labelAngle": 0, "title": ""}, "field": "Are you currently a student? (high school, university, or graduate)", "sort": ["No", "Yes"], "type": "nominal"}, "y": {"aggregate": "sum", "axis": {"format": "%"}, "field": "percent", "title": "Percentage of Respondents", "type": "quantitative"}}, "height": 200, "resolve": {"scale": {"y": "shared"}}, "selection": {"selector417": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "transform": [{"joinaggregate": [{"op": "count", "field": "*", "as": "total"}]}, {"calculate": "1 / datum.total", "as": "percent"}], "width": 150}, {"data": {"url": "http://localhost:62439/15711378d78daf9c191a7e705f6383a6.json"}, "mark": "bar", "encoding": {"color": {"field": "What is your gender?", "scale": {"scheme": "accent"}, "title": "Gender", "type": "nominal"}, "column": {"field": "What is your gender?", "header": {"labels": false, "title": ["Have you ever published any academic research", "(papers, preprints, conference proceedings, etc)?"]}, "sort": ["Man", "Woman"], "type": "nominal"}, "tooltip": {"aggregate": "sum", "field": "percent", "type": "quantitative"}, "x": {"axis": {"labelAngle": 0, "title": ""}, "field": "Have you ever published any academic research (papers, preprints, conference proceedings, etc)?", "sort": ["No", "Yes"], "type": "nominal"}, "y": {"aggregate": "sum", "axis": {"format": "%"}, "field": "percent", "title": "Percentage of Respondents", "type": "quantitative"}}, "height": 200, "resolve": {"scale": {"y": "shared"}}, "selection": {"selector422": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "transform": [{"joinaggregate": [{"op": "count", "field": "*", "as": "total"}]}, {"calculate": "1 / datum.total", "as": "percent"}], "width": 150}]}], "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json"};
+      var embedOpt = {"renderer": "png", "mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
